@@ -40,12 +40,16 @@ all: libftd2xx.def ftd2xx.dll.so
 
 $(TARBALL):
 	wget http://www.ftdichip.com/Drivers/D2XX/Linux/$(TARBALL)
-	touch -t 1201010000 $(TARBALL)
+	#touch -t 1201010000 $(TARBALL)
 
 $(ARCHIVE) $(IDIR)/ftd2xx.h:  $(TARBALL)
-	tar xzf $(TARBALL)
-	rm -rf $(LIBFTD)
-	mv release $(LIBFTD)
+	# tar -xvf $(TARBALL)
+	#tar -xvzf $(TARBALL)
+	# rm -rvf $(LIBFTD)
+	echo `pwd`
+	#sleep 5
+	#mv release $(LIBFTD)
+	#ln -s /usr/lib/x86_64-linux-gnu/wine/libwine.so.1 debian/usr/lib/$(ARCH)-linux-gnu/libwine.so.1
 
 libxftd2xx.a:  $(ARCHIVE) xFTsyms.objcopy
 	objcopy --redefine-syms=xFTsyms.objcopy $(ARCHIVE) libxftd2xx.a
@@ -74,8 +78,8 @@ clean:
 	rm -f *.o *xftd2xx.* *.so *.def
 
 distclean:  clean
-	rm -rf $(LIBFTD) $(RELEASE)
-	rm -f $(TARBALL) $(RELEASE).tar.gz
+	#rm -rf $(LIBFTD) $(RELEASE)
+	#rm -f $(TARBALL) $(RELEASE).tar.gz
 
 release:
 	rm -rf $(RELEASE)
