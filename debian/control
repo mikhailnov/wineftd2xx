@@ -1,0 +1,15 @@
+Source: wineftd2xx
+Section: libs
+Priority: optional
+Maintainer: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
+Build-Depends: debhelper (>=10), wine64-tools | wine64-development-tools | wine32-tools | wine32-development-tools
+Standards-Version: 3.9.6
+Homepage: https://github.com/mikhailnov/wineftd2xx
+
+Package: wineftd2xx
+# write only amd64 and i386 here
+Architecture: any
+# ${misc:Depends}, 
+Depends: wine-stable | wine-development
+Description: wineftd2xx library
+ Wine wrapper for running Windows applications using proprietary FTD2XX.DLL
